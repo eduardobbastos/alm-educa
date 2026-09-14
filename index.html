@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Portuária e Fluxos Logísticos | Alm Educa</title>
+  <meta name="description" content="Curso online ao vivo de Gestão Portuária e Fluxos Logísticos. 102h-aula, 7 módulos, 9 especialistas. Início 29/09/2026.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- CENÁRIO 3D FIXO DE FUNDO: PASSAGEM PELO PORTO -->
+  <div class="port-bg-fixed" id="portCanvasContainer">
+    <canvas id="portCanvas"></canvas>
+    <div class="canvas-loader" id="canvasLoader">
+      <div class="loader-spinner"></div>
+      <span>Carregando experiência portuária 3D...</span>
+    </div>
+  </div>
+
+  <!-- HUD NÁUTICO DE NAVEGAÇÃO & ETAPAS DO SITE -->
+  <nav class="port-hud-nav" id="portHudNav" aria-label="Navegação por etapas do porto">
+    <div class="hud-nav-inner">
+      <div class="hud-nav-brand">
+        <a href="#etapa-1" class="hud-logo-link" title="ALM Educa">
+          <img src="https://static.wixstatic.com/media/160cbf_58d0c4316de9463f92266f57f5fbd9fd~mv2.png/v1/crop/x_0,y_31,w_957,h_158/fill/w_615,h_102,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TREINAMENTO%2C%20DESENVOLVIMENTO%20%26%20CONSULTORIA%20(1).png" alt="ALM Educa" class="hud-logo">
+        </a>
+      </div>
+
+      <div class="hud-nav-steps">
+        <button type="button" class="nav-step-btn active" data-step="0" data-target="#etapa-1">
+          <span class="step-idx">01</span>
+          <span class="step-name">Embarque</span>
+        </button>
+        <button type="button" class="nav-step-btn" data-step="1" data-target="#etapa-2">
+          <span class="step-idx">02</span>
+          <span class="step-name">7 Módulos</span>
+        </button>
+        <button type="button" class="nav-step-btn" data-step="2" data-target="#etapa-3">
+          <span class="step-idx">03</span>
+          <span class="step-name">Público &amp; Formato</span>
+        </button>
+        <button type="button" class="nav-step-btn" data-step="3" data-target="#etapa-4">
+          <span class="step-idx">04</span>
+          <span class="step-name">Docentes</span>
+        </button>
+        <button type="button" class="nav-step-btn" data-step="4" data-target="#etapa-5">
+          <span class="step-idx">05</span>
+          <span class="step-name">Matrícula</span>
+        </button>
+      </div>
+
+      <div class="hud-nav-action">
+        <a href="#etapa-5" class="btn btn-hud">Garantir Vaga</a>
+      </div>
+    </div>
+
+    <!-- Barra de Progresso com Ícone de Navio -->
+    <div class="hud-progress-strip">
+      <div class="hud-progress-fill" id="hudProgressFill"></div>
+      <span class="hud-ship-indicator" id="hudShipIndicator">🚢</span>
+    </div>
+  </nav>
+
+  <!-- CONTAINER DE SCROLLYTELLING COM AS 5 ETAPAS DO SITE -->
+  <main class="scrolly-main" id="scrollyMain">
+
+    <!-- ========================================================
+         ETAPA 01: CANAL DE ACESSO — APRESENTAÇÃO DO CURSO (HERO)
+         ======================================================== -->
+    <section class="port-stage stage-hero" id="etapa-1">
+      <div class="container stage-grid">
+        <div class="stage-glass-card hero-main-card">
+          <div class="stage-tag">
+            <span class="tag-anchor">⚓</span>
+            <span>ETAPA 01 / 05 • CANAL DE ACESSO MARÍTIMO</span>
+          </div>
+          <span class="badge">🚀 Curso Online Ao Vivo</span>
+          <h1 class="stage-title">Gestão Portuária e Fluxos Logísticos</h1>
+          <p class="stage-subtitle">Domine a regulação, operação e integração logística dos modais no Brasil com uma capacitação prática de 102h-aula e 9 especialistas de mercado.</p>
+          
+          <div class="hero-meta-grid">
+            <div class="meta-item"><strong>Início</strong><span>29 Set 2026</span></div>
+            <div class="meta-item"><strong>Carga Horária</strong><span>102h ao vivo</span></div>
+            <div class="meta-item"><strong>Investimento</strong><span>R$ 5.995,00</span></div>
+            <div class="meta-item"><strong>Parcelamento</strong><span>até 12x cartão</span></div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#etapa-5" class="btn btn-primary">Garantir minha vaga</a>
+            <a href="#etapa-2" class="btn btn-outline">Explorar os 7 módulos ↓</a>
+          </div>
+
+          <div class="stage-scroll-hint">
+            <span class="hint-mouse"></span>
+            <span>Role para avançar pelo canal e ver o conteúdo</span>
+          </div>
+        </div>
+
+        <!-- Janela de Vídeo e Chamada Promocional Antecipação Black Friday -->
+        <div class="stage-glass-card hero-video-card">
+          <div class="bf-promo-badge">
+            <span class="bf-fire">🔥</span>
+            <span class="bf-text">ANTECIPAÇÃO BLACK FRIDAY</span>
+            <span class="bf-tag">LOTE EXCLUSIVO</span>
+          </div>
+
+          <div class="video-card-header">
+            <h3>Assista ao Vídeo Oficial do Curso</h3>
+            <p>Conheça em detalhes a capacitação com a equipe docente e executiva da ALM Educa.</p>
+          </div>
+
+          <!-- Janela do Vídeo Incorporado do YouTube -->
+          <div class="video-window-wrapper">
+            <iframe 
+              src="https://www.youtube-nocookie.com/embed/_EDt33fRaso?rel=0&modestbranding=1" 
+              title="Apresentação do Curso - ALM Educa" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- Chamada para o Canal Oficial no YouTube -->
+          <div class="video-channel-box">
+            <div class="channel-info">
+              <span class="yt-play-icon">▶️</span>
+              <div class="channel-texts">
+                <strong>Canal Oficial ALM Educa</strong>
+                <span>Acesse para mais aulas, palestras e análises portuárias</span>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/@almeduca" target="_blank" class="btn-yt-channel" rel="noopener noreferrer">
+              Ver Canal ↗
+            </a>
+          </div>
+
+          <!-- Rodapé do Card com Chamada Black Friday -->
+          <div class="video-card-cta">
+            <div class="bf-price-row">
+              <span class="bf-price-label">Valor Promocional Antecipado:</span>
+              <span class="bf-price-value">R$ 5.995,00 <span class="bf-old-price">R$ 6.995,00</span></span>
+            </div>
+            <a href="#etapa-5" class="btn btn-primary btn-block">Garantir Vaga com Desconto Black Friday →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ETAPA 02: OPERAÇÃO STS & ENGENHARIA — OS 7 MÓDULOS
+         ======================================================== -->
+    <section class="port-stage stage-modules" id="etapa-2">
+      <div class="container">
+        <div class="stage-header-center">
+          <div class="stage-tag">
+            <span class="tag-anchor">🏗️</span>
+            <span>ETAPA 02 / 05 • GIGANTES DO CAIS — OPERAÇÃO STS</span>
+          </div>
+          <h2 class="stage-title">Conteúdo Programático &amp; Módulos</h2>
+          <p class="stage-subtitle">Navegando sob os guindastes pórtico Ship-to-Shore e a engenharia que sustenta a movimentação de carga pesada.</p>
+        </div>
+
+        <!-- Barra de métricas de impacto -->
+        <div class="stage-glass-card trust-strip">
+          <div class="trust-grid">
+            <div class="trust-stat"><span class="trust-number">102h</span><span class="trust-label">aula ao vivo</span></div>
+            <div class="trust-stat"><span class="trust-number">7</span><span class="trust-label">módulos executivos</span></div>
+            <div class="trust-stat"><span class="trust-number">9</span><span class="trust-label">especialistas de mercado</span></div>
+            <div class="trust-stat"><span class="trust-number">49</span><span class="trust-label">etapas programáticas</span></div>
+          </div>
+        </div>
+
+        <!-- Grade dos 7 Módulos -->
+        <div class="modules-glass-grid">
+          <article class="module-glass-card">
+            <div class="module-number">01</div>
+            <h3>Conceitos básicos logísticos e portuários</h3>
+            <p>Fundamentos da cadeia logística, tipologia portuária e o papel dos portos na economia brasileira.</p>
+            <span class="module-badge">8 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">02</div>
+            <h3>Marco Legal — Sistema de Transportes</h3>
+            <p>Lei nº 10.233/01, ANTT, modal rodoviário, ferroviário e dutoviário e a integração regulatória.</p>
+            <span class="module-badge">9 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">03</div>
+            <h3>Marco Legal — Portuário</h3>
+            <p>Leis nº 12.379/11 e 12.815/13, modelos de outorga, atos infralegais e governança setorial.</p>
+            <span class="module-badge">6 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">04</div>
+            <h3>Planejamento Portuário</h3>
+            <p>Plano Nacional de Logística, zoneamento, projeção de demanda e alocação estratégica de recursos.</p>
+            <span class="module-badge">4 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">05</div>
+            <h3>Gestão Portuária</h3>
+            <p>Autoridades Portuárias, operadores, tarifas, contratos, trabalhadores e indicadores de performance.</p>
+            <span class="module-badge">8 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">06</div>
+            <h3>Engenharia Portuária</h3>
+            <p>Dragagem, acessos aquaviários, layouts de berços e pátios, obras de conexão e modal ferroviário.</p>
+            <span class="module-badge">8 etapas</span>
+          </article>
+
+          <article class="module-glass-card">
+            <div class="module-number">07</div>
+            <h3>Gestão Ambiental</h3>
+            <p>Licenciamento, gerenciamento de riscos e resíduos, mitigação de GEE e transição energética.</p>
+            <span class="module-badge">6 etapas</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ETAPA 03: BERÇO DE ATRACAÇÃO — PÚBLICO & FORMATO
+         ======================================================== -->
+    <section class="port-stage stage-target" id="etapa-3">
+      <div class="container">
+        <div class="stage-header-center">
+          <div class="stage-tag">
+            <span class="tag-anchor">🚢</span>
+            <span>ETAPA 03 / 05 • BERÇO DE ATRACAÇÃO — NAVIO DE 100M</span>
+          </div>
+          <h2 class="stage-title">Para Quem É o Curso &amp; Formato</h2>
+          <p class="stage-subtitle">Ao lado de centenas de metros de aço e milhares de TEUs atracados, conheça a dinâmica da capacitação.</p>
+        </div>
+
+        <div class="stage-grid">
+          <!-- Card de Público Alvo -->
+          <div class="stage-glass-card target-box">
+            <h3 class="card-inner-title">Para quem é este curso?</h3>
+            <p class="card-inner-desc">Desenvolvido para profissionais que precisam de domínio prático e regulatório das operações:</p>
+            <ul class="target-list">
+              <li>Gestores portuários e operadores logísticos</li>
+              <li>Analistas de logística e comércio exterior</li>
+              <li>Despachantes aduaneiros e consultores de comex</li>
+              <li>Advogados atuantes no setor regulado</li>
+              <li>Profissionais em transição de carreira para a área portuária</li>
+              <li>Estudantes universitários e pesquisadores de infraestrutura</li>
+            </ul>
+          </div>
+
+          <!-- Card de Formato e Horários -->
+          <div class="stage-glass-card schedule-box">
+            <div class="schedule-top-badge">Aulas Online Síncronas</div>
+            <h3 class="card-inner-title">Formato &amp; Horário das Aulas</h3>
+            <p class="card-inner-desc">Interação em tempo real com os maiores especialistas do setor, com toda a flexibilidade da plataforma digital.</p>
+            
+            <div class="schedule-features">
+              <div class="sched-feature"><span>📅</span><div><strong>Terças e Quintas</strong><p>19h às 21h30 (horário de Brasília)</p></div></div>
+              <div class="sched-feature"><span>📹</span><div><strong>Aulas Gravadas</strong><p>Acesse novamente quando e onde quiser</p></div></div>
+              <div class="sched-feature"><span>🎓</span><div><strong>Certificado Digital</strong><p>Comprovação técnica de 102 horas-aula</p></div></div>
+            </div>
+
+            <div class="schedule-date-highlight">
+              <span class="next-label">Próxima turma confirmada</span>
+              <span class="next-date">29 de Setembro de 2026</span>
+              <a href="#etapa-5" class="btn btn-primary btn-block">Garantir Minha Vaga</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ETAPA 04: TERMINAL MULTIMODAL — CORPO DOCENTE & GARANTIAS
+         ======================================================== -->
+    <section class="port-stage stage-instructors" id="etapa-4">
+      <div class="container">
+        <div class="stage-header-center">
+          <div class="stage-tag">
+            <span class="tag-anchor">🌐</span>
+            <span>ETAPA 04 / 05 • TERMINAL MULTIMODAL &amp; BACIA DE MANOBRA</span>
+          </div>
+          <h2 class="stage-title">Corpo Docente de Especialistas</h2>
+          <p class="stage-subtitle">Aprenda diretamente com quem atua e decide nos principais órgãos reguladores e portos do Brasil.</p>
+        </div>
+
+        <div class="instructors-glass-grid">
+          <div class="instructor-glass-card"><span class="instructor-avatar">FC</span><h4>Prof. MSc. Fernando José de Pádua Costa Fonseca</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">GP</span><h4>Prof. Esp. Giovanni Cavalcanti Paiva</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">DB</span><h4>Prof. MSc. Dino Antunes Dias Batista</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">FS</span><h4>Prof. Esp. Fernando Corrêa dos Santos</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">UO</span><h4>Prof. Esp. Uirá Cavalcante Oliveira</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">NC</span><h4>Prof. Esp. Nasareno Figueiredo Cei</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">FT</span><h4>Prof. MSc. Flávia Morais Lopes Takafashi</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">AT</span><h4>Prof. Esp. Alex Trevizan</h4></div>
+          <div class="instructor-glass-card"><span class="instructor-avatar">GL</span><h4>Prof. MSc. George Lavor Teixeira</h4></div>
+        </div>
+
+        <!-- Garantias e diferenciais -->
+        <div class="guarantees-glass-strip">
+          <div class="guarantee-item"><span>📹</span><h4>Aulas gravadas</h4><p>Reveja o conteúdo a qualquer momento na plataforma.</p></div>
+          <div class="guarantee-item"><span>🏆</span><h4>Certificado digital</h4><p>Comprove qualificação de alto nível no setor portuário.</p></div>
+          <div class="guarantee-item"><span>👨‍🏫</span><h4>Professores de mercado</h4><p>Profissionais ativos na ANTAQ, ministérios e operadores.</p></div>
+          <div class="guarantee-item"><span>🌎</span><h4>Visão integrada</h4><p>Regulação, engenharia, gestão executiva e sustentabilidade.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ETAPA 05: TERMINAL DE DESTINO — MATRÍCULA & INSCRIÇÃO
+         ======================================================== -->
+    <section class="port-stage stage-checkout" id="etapa-5">
+      <div class="container">
+        <div class="stage-header-center">
+          <div class="stage-tag">
+            <span class="tag-anchor">🎯</span>
+            <span>ETAPA 05 / 05 • DESTINO ALCANÇADO — MATRÍCULA</span>
+          </div>
+          <h2 class="stage-title">Invista no Seu Futuro no Setor Portuário</h2>
+          <p class="stage-subtitle">Garanta sua vaga na turma de 29 de setembro de 2026. Vagas com valor promocional limitado.</p>
+          <div class="bf-checkout-banner">
+            <span>🔥 ANTECIPAÇÃO BLACK FRIDAY: Desconto Exclusivo de R$ 1.000,00 Aplicado</span>
+          </div>
+        </div>
+
+        <div class="stage-grid">
+          <!-- Card de Investimento -->
+          <div class="stage-glass-card cta-info-card">
+            <span class="bf-pill">🔥 LOTE ANTECIPADO BLACK FRIDAY</span>
+            <h3>Condições de Pagamento</h3>
+            <div class="price-box">
+              <span class="price-old">R$ 6.995,00</span>
+              <span class="price-current">R$ 5.995,00</span>
+              <span class="price-installment">em até 12x no cartão de crédito</span>
+            </div>
+            <p class="price-note">Acesso imediato à plataforma e aos materiais introdutórios após a confirmação da inscrição.</p>
+            
+            <div class="payment-methods-box">
+              <span class="pay-chip">💳 Cartão em 12x</span>
+              <span class="pay-chip">⚡ Pix Instantâneo</span>
+              <span class="pay-chip">📄 Boleto Bancário</span>
+            </div>
+
+            <div class="cta-perks-list">
+              <div>✓ Material didático completo e apresentações dos docentes</div>
+              <div>✓ Suporte contínuo da equipe acadêmica da ALM Educa</div>
+              <div>✓ Networking com executivos e especialistas de todo o país</div>
+            </div>
+          </div>
+
+          <!-- Formulário Oficial de Pré-Inscrição -->
+          <div class="stage-glass-card cta-form-card">
+            <h3>Pré-Inscrição</h3>
+            <p class="form-note">Preencha seus dados para prosseguir com a matrícula segura.</p>
+            
+            <form id="leadForm" action="https://pay.voompcreators.com.br/16283" method="get" target="_blank">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required placeholder="seu@email.com">
+
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) 9XXXX-XXXX">
+
+              <label for="empresa">Empresa / Instituição</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa (opcional)">
+
+              <button type="submit" class="btn btn-primary btn-block">Continuar para Pagamento Seguro →</button>
+            </form>
+            <p class="form-safe">🔒 Ambiente seguro. Você será redirecionado à página de pagamento oficial da ALM Educa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RODAPÉ COMPACTO COM FAIXA DE PONTA A PONTA (ALTO CONTRASTE)
+         ============================================================ -->
+    <footer class="port-footer" id="portFooter">
+      <div class="container footer-compact-container">
+        <!-- Logo ALM Educa e Redes Sociais -->
+        <div class="footer-compact-brand">
+          <img src="https://static.wixstatic.com/media/160cbf_58d0c4316de9463f92266f57f5fbd9fd~mv2.png/v1/crop/x_0,y_31,w_957,h_158/fill/w_615,h_102,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TREINAMENTO%2C%20DESENVOLVIMENTO%20%26%20CONSULTORIA%20(1).png" alt="ALM Treinamento, Desenvolvimento & Consultoria" class="footer-logo">
+          <div class="footer-social-list">
+            <a href="https://www.instagram.com/alm.educa/" target="_blank" class="footer-social-btn" aria-label="Instagram">Instagram</a>
+            <a href="https://www.linkedin.com/company/almeduca/posts/?feedView=all" target="_blank" class="footer-social-btn" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://www.facebook.com/alm.educa" target="_blank" class="footer-social-btn" aria-label="Facebook">Facebook</a>
+            <a href="https://www.youtube.com/@ALM-TREINAMENTODESENVOLVIMENTO" target="_blank" class="footer-social-btn" aria-label="YouTube">YouTube</a>
+          </div>
+        </div>
+
+        <!-- Canais de Atendimento -->
+        <div class="footer-compact-contact">
+          <h4>Canais de Atendimento</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="f-icon">✉️</span>
+              <a href="mailto:alm@almeduca.com">alm@almeduca.com</a>
+            </li>
+            <li>
+              <span class="f-icon">💬</span>
+              <a href="https://wa.me/5521991243744" target="_blank">WhatsApp: (21) 99124-3744</a>
+            </li>
+            <li>
+              <span class="f-icon">📞</span>
+              <a href="tel:+5521998480802">Telefone: (21) 99848-0802</a>
+            </li>
+            <li class="f-schedule">Atendimento acadêmico de Seg a Sex: 09h às 18h</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <p>© 2026 ALM Treinamento Desenvolvimento e Consultoria LTDA. Todos os direitos reservados.</p>
+          <div class="footer-legal-links">
+            <a href="https://www.almeduca.com/termos-e-condi%C3%A7%C3%B5es" target="_blank">Termos</a>
+            <span>•</span>
+            <a href="https://www.almeduca.com/pol%C3%ADtica-de-privacidade" target="_blank">Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- SCRIPTS EXTERNOS & ENGINE -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
