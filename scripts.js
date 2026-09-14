@@ -18,24 +18,65 @@ function initLeadForm() {
 
   if (form) {
     form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Impede o envio padrão para podermos processar via AJAX
+      
       const nome = form.nome.value.trim();
       const email = form.email.value.trim();
       if (!nome || !email) {
-        e.preventDefault();
         alert('Por favor, preencha nome e e-mail antes de continuar.');
         return;
       }
 
+      const whatsapp = form.whatsapp.value;
+      const whatsappDigits = whatsapp.replace(/\D/g, '');
+      const empresa = form.empresa.value.trim();
+
+      // 1. Preparar a URL do Checkout da Voomp com os parâmetros
       const params = new URLSearchParams();
       params.set('nome', nome);
       params.set('email', email);
-      if (form.whatsapp.value) params.set('whatsapp', form.whatsapp.value.replace(/\D/g, ''));
-      if (form.empresa.value) params.set('empresa', form.empresa.value.trim());
+      if (whatsappDigits) params.set('whatsapp', whatsappDigits);
+      if (empresa) params.set('empresa', empresa);
 
-      const url = new URL(form.action);
+      // Usar a URL original definida no action do HTML (https://pay.voompcreators.com.br/16283)
+      const url = new URL(form.getAttribute('action') || 'https://pay.voompcreators.com.br/16283');
       url.search = '';
       for (const [k, v] of params) { url.searchParams.set(k, v); }
-      form.action = url.toString();
+      const checkoutUrl = url.toString();
+
+      // 2. Feedback visual no botão
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '⏳ Redirecionando...';
+      submitBtn.disabled = true;
+
+      // 3. Enviar os dados para o e-mail via FormSubmit em background
+      fetch('https://formsubmit.co/ajax/alm@almeduca.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Nome: nome,
+          Email: email,
+          WhatsApp: whatsapp,
+          Empresa: empresa,
+          _subject: "🔥 Nova Intenção de Matrícula - ALM Educa",
+          _template: "table",
+          _autoresponse: "Olá! Recebemos sua intenção de matrícula. Caso não tenha concluído o pagamento, nossa equipe entrará em contato em breve." // Resposta automática para o lead
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Redirecionar para o checkout após o envio do e-mail
+        window.location.href = checkoutUrl;
+      })
+      .catch(error => {
+        console.error("Erro ao enviar email:", error);
+        // Mesmo com erro no envio do e-mail, garantir que o aluno vá para o checkout
+        window.location.href = checkoutUrl;
+      });
     });
   }
 }
