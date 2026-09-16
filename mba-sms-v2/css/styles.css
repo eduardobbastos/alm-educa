@@ -789,18 +789,58 @@ img {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
-.price-tag {
-  font-size: 2.3rem;
+.badge-blackfriday {
+  background: #000000;
+  border: 1px solid var(--alm-gold);
+  color: var(--alm-gold);
   font-weight: 800;
-  color: #FFFFFF;
-  margin: 12px 0 4px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(229, 181, 94, 0.4);
 }
 
-.price-sub {
-  font-size: 0.9rem;
-  color: var(--alm-text-muted);
-  margin-bottom: 22px;
+.price-old {
+  font-size: 1rem;
+  color: #94A3B8;
+  text-decoration: line-through;
+  margin-top: 14px;
+  display: block;
+}
+
+.price-installments {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 6px 0;
+  text-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+}
+
+.price-installments .installment-highlight {
+  color: var(--alm-gold);
+}
+
+.price-cash {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  margin-bottom: 10px;
+}
+
+.price-economy-badge {
+  display: inline-block;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid #25D366;
+  color: #25D366;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.25);
 }
 
 .coupon-box {
