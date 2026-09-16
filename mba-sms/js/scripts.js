@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyCoupon();
   initAccordion();
   initWhatsAppTracking();
+  initShareCopy();
 });
 
 /* ============================================================
@@ -203,4 +204,35 @@ function initWhatsAppTracking() {
     });
   });
 }
+
+/* ============================================================
+   7. COPIAR RESUMO PARA COMPARTILHAMENTO (WHATSAPP & TELEGRAM)
+   ============================================================ */
+function initShareCopy() {
+  const btn = document.getElementById('btnCopyShare');
+  const btnText = document.getElementById('copyBtnText');
+  if (!btn) return;
+
+  const shareText = `🎓 *MBA SMS na Indústria de Petróleo e Gás Natural*\n\nPós-Graduação 100% Online com *Curso Aprovado pelo MEC* e Certificação Oficial Anhanguera.\nAulas com ex-auditores da ANP e doutores da COPPE/UFRJ.\n\n🔥 *Black Friday 60% OFF:*\n12x de R$ 248,00 ou R$ 2.480,00 à vista (Economia imediata de R$ 3.720,00)!\n\nConfira a grade completa e inscreva-se:\n👉 https://cursos.almeduca.com/`;
+
+  btn.addEventListener('click', () => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(shareText).then(() => {
+        if (btnText) btnText.textContent = '✓ Resumo Copiado!';
+        btn.style.background = 'rgba(16, 185, 129, 0.25)';
+        btn.style.borderColor = '#10B981';
+        setTimeout(() => {
+          if (btnText) btnText.textContent = 'Copiar Resumo';
+          btn.style.background = '';
+          btn.style.borderColor = '';
+        }, 3000);
+      }).catch(() => {
+        prompt('Copie o texto de compartilhamento:', shareText);
+      });
+    } else {
+      prompt('Copie o texto de compartilhamento:', shareText);
+    }
+  });
+}
+
 
