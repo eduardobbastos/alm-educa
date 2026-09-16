@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://eduardobbastos.github.io/alm-educa/sitemap.xml
-
