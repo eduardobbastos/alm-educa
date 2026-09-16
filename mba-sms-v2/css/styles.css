@@ -76,8 +76,8 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.02);
-  transition: transform 0.1s ease-out;
+  transform: none !important;
+  transition: none !important;
   filter: brightness(0.95) contrast(1.08);
 }
 

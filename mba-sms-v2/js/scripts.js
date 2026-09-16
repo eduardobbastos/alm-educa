@@ -4,7 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initParallaxBackground();
   initTrackingParams();
   initFormLead();
   initCopyCoupon();
@@ -13,28 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   1. PARALLAX SUAVE E EFEITO CINEMATOGRÁFICO DE SCROLL
+   1. FUNDO ESTÁTICO (FIXO SEM MOVIMENTO AO ROLAR O MOUSE)
    ============================================================ */
 function initParallaxBackground() {
-  const bgImg = document.getElementById('bgOffshoreImg');
-  if (!bgImg) return;
-
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        // Parallax sutil no eixo Y e zoom lento conforme desce
-        const translateY = scrollY * 0.12; 
-        const scale = 1.03 + Math.min(scrollY * 0.00008, 0.15);
-
-        bgImg.style.transform = `translate3d(0, -${translateY}px, 0) scale(${scale})`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
+  // Fundo 100% estático conforme solicitação
 }
 
 /* ============================================================
