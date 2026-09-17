@@ -735,6 +735,17 @@ img {
   line-height: 1.4;
 }
 
+.faculty-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--alm-gold);
+  box-shadow: 0 0 15px rgba(229, 181, 94, 0.4);
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
 .faculty-avatar-placeholder {
   width: 68px;
   height: 68px;
